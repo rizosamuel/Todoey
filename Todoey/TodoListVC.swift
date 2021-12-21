@@ -9,10 +9,15 @@ import UIKit
 
 final class TodoListVC: UITableViewController {
 	
+	private let userDefaults = UserDefaults.standard
 	private var itemArray = ["Find Mike", "Buy Eggos", "Destroy Demogorgan"]
 	
 	override func viewDidLoad() {
+		
 		super.viewDidLoad()
+		if let array = userDefaults.array(forKey: "TodoListArray") as? [String] {
+			itemArray = array
+		}
 	}
 	
 	@IBAction private func didTapAddButton(_ sender: UIBarButtonItem) {
@@ -24,6 +29,7 @@ final class TodoListVC: UITableViewController {
 		let action = UIAlertAction(title: actionTitle, style: .default) { action in
 			self.itemArray.append(alertTextField.text ?? "")
 			self.tableView.reloadData()
+			self.userDefaults.set(self.itemArray, forKey: "TodoListArray")
 		}
 		
 		alert.addAction(action)
