@@ -32,7 +32,13 @@
                             <outlet property="delegate" destination="RSA-92-ADY" id="ddw-SS-DmT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Todoey" id="hiL-DX-B6U"/>
+                    <navigationItem key="navigationItem" title="Todoey" id="hiL-DX-B6U">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="SAP-kF-Zye">
+                            <connections>
+                                <action selector="didTapAddButton:" destination="RSA-92-ADY" id="r76-gr-wyn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1U6-7M-PiZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -46,6 +52,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JvA-4z-j2R">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" name="AccentColor"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,6 +69,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

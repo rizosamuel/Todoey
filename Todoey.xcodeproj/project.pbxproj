@@ -60,8 +60,8 @@
 				73D9D4D827716A700028F140 /* SceneDelegate.swift */,
 				73D9D4DA27716A700028F140 /* TodoListVC.swift */,
 				73D9D4DC27716A700028F140 /* Main.storyboard */,
-				73D9D4DF27716A700028F140 /* Assets.xcassets */,
 				73D9D4E127716A700028F140 /* LaunchScreen.storyboard */,
+				73D9D4DF27716A700028F140 /* Assets.xcassets */,
 				73D9D4E427716A700028F140 /* Info.plist */,
 			);
 			path = Todoey;
