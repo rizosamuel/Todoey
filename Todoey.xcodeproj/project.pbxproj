@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		739273C227744EEA00EEBADB /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 739273C027744EEA00EEBADB /* DataModel.xcdatamodeld */; };
 		73D9D4D727716A700028F140 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D9D4D627716A700028F140 /* AppDelegate.swift */; };
 		73D9D4D927716A700028F140 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D9D4D827716A700028F140 /* SceneDelegate.swift */; };
 		73D9D4DB27716A700028F140 /* TodoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D9D4DA27716A700028F140 /* TodoListVC.swift */; };
 		73D9D4DE27716A700028F140 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73D9D4DC27716A700028F140 /* Main.storyboard */; };
 		73D9D4E027716A700028F140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73D9D4DF27716A700028F140 /* Assets.xcassets */; };
 		73D9D4E327716A700028F140 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73D9D4E127716A700028F140 /* LaunchScreen.storyboard */; };
-		73D9D4EB27717C890028F140 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D9D4EA27717C890028F140 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		739273C127744EEA00EEBADB /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		73D9D4D327716A700028F140 /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73D9D4D627716A700028F140 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73D9D4D827716A700028F140 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -25,7 +26,6 @@
 		73D9D4DF27716A700028F140 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73D9D4E227716A700028F140 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73D9D4E427716A700028F140 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		73D9D4EA27717C890028F140 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 		73D9D4EC27717C940028F140 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				73D9D4EA27717C890028F140 /* Item.swift */,
+				739273C027744EEA00EEBADB /* DataModel.xcdatamodeld */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -165,7 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73D9D4EB27717C890028F140 /* Item.swift in Sources */,
+				739273C227744EEA00EEBADB /* DataModel.xcdatamodeld in Sources */,
 				73D9D4DB27716A700028F140 /* TodoListVC.swift in Sources */,
 				73D9D4D727716A700028F140 /* AppDelegate.swift in Sources */,
 				73D9D4D927716A700028F140 /* SceneDelegate.swift in Sources */,
@@ -394,6 +394,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		739273C027744EEA00EEBADB /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				739273C127744EEA00EEBADB /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 739273C127744EEA00EEBADB /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 73D9D4CB27716A700028F140 /* Project object */;
 }

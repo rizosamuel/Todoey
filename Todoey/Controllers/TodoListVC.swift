@@ -6,36 +6,32 @@
 //
 
 import UIKit
+import CoreData
 
 final class TodoListVC: UITableViewController {
 	
+	private let coreDataContext: NSManagedObjectContext
 	private let userDefaults = UserDefaults.standard
 	private var itemArray: [Item] = []
+	
+	init() {
+		
+		self.coreDataContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+		super.init()
+	}
+	
+	required init?(coder: NSCoder) {
+		
+		self.coreDataContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+		super.init(coder: coder)
+		// fatalError("init(coder:) has not been implemented")
+	}
 	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
-		populateWithDummyData()
-	}
-	
-	private func populateWithDummyData() {
-		
-		let item = Item()
-		item.title = "Find Mike"
-		
-		let item2 = Item()
-		item2.title = "Buy Eggos"
-		
-		let item3 = Item()
-		item3.title = "Destroy Demogorgon"
-		
-		itemArray.append(item)
-		itemArray.append(item2)
-		itemArray.append(item3)
-		
-		if let array = userDefaults.array(forKey: "TodoListArray") as? [Item] {
-			itemArray = array
-		}
+		loadItems()
+		// populateWithDummyData()
 	}
 	
 	@IBAction private func didTapAddButton(_ sender: UIBarButtonItem) {
@@ -46,11 +42,13 @@ final class TodoListVC: UITableViewController {
 		let actionTitle = "Add Item"
 		let action = UIAlertAction(title: actionTitle, style: .default) { action in
 			
-			let item = Item()
+			let item = Item(context: self.coreDataContext)
 			item.title = alertTextField.text ?? ""
+			item.done = false
 			self.itemArray.append(item)
 			self.tableView.reloadData()
-			self.userDefaults.set(self.itemArray, forKey: "TodoListArray")
+			self.saveItems()
+			// self.userDefaults.set(self.itemArray, forKey: "TodoListArray")
 		}
 		
 		alert.addAction(action)
@@ -89,5 +87,59 @@ extension TodoListVC {
 		itemArray[indexPath.row].done = !itemArray[indexPath.row].done
 		tableView.deselectRow(at: indexPath, animated: true)
 		tableView.reloadData()
+		saveItems()
+	}
+}
+
+// MARK: - Model Manipulation Methods
+extension TodoListVC {
+	
+	private func saveItems() {
+		
+		do {
+			try self.coreDataContext.save()
+		} catch {
+			print(error.localizedDescription)
+		}
+	}
+	
+	private func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
+		
+		do {
+			itemArray = try coreDataContext.fetch(request)
+		} catch {
+			print(error.localizedDescription)
+		}
+	}
+}
+
+// MARK: - Search Bar Delegate Methods
+extension TodoListVC: UISearchBarDelegate {
+	
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		
+		let request: NSFetchRequest<Item> = Item.fetchRequest()
+		let predicate = NSPredicate(format: "title CONTAINS %@", searchBar.text!)
+		let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+		
+		request.predicate = predicate
+		request.sortDescriptors = [sortDescriptor]
+		
+		loadItems(with: request)
+		tableView.reloadData()
+	}
+	
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		
+		guard searchBar.text?.count != 0 else {
+			loadItems()
+			tableView.reloadData()
+			DispatchQueue.main.async { searchBar.resignFirstResponder() }
+			return
+		}
+	}
+	
+	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+		view.endEditing(true)
 	}
 }
